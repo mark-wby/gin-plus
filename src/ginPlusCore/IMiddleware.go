@@ -1,7 +1,7 @@
 package ginPlusCore
 
 import (
-	"ginPlus/src/custom"
+	"github.com/mark-wby/gin-plus/src/custom"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )

@@ -1,4 +1,4 @@
-package customUtil
+package custom
 
 type LoggerUtil struct {
 	requestSqlLog []string //sql日志

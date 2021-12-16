@@ -3,7 +3,7 @@ package customUtil
 import (
 	"bytes"
 	"encoding/json"
-	"ginPlus/src/customExecption"
+	"github.com/mark-wby/gin-plus/src/customExecption"
 	"io/ioutil"
 	"net/http"
 	"time"

@@ -2,7 +2,7 @@ package ginPlusCore
 
 import (
 	"fmt"
-	"ginPlus/src/customExecption"
+	"github.com/mark-wby/gin-plus/src/customExecption"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"reflect"

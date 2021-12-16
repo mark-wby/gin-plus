@@ -1,12 +1,17 @@
 package controller
 
 import (
-	"ginPlus/src/ginPlusCore"
+	"github.com/mark-wby/gin-plus/src/ginPlusCore"
 	"github.com/gin-gonic/gin"
 )
 
 type IndexController struct {
 	*ginPlusCore.GormAdapter
+}
+
+//构建路由
+func (this *IndexController) Build(goft *ginPlusCore.GinPlusCore){
+	goft.Handle("GET","/",this.GetIndex)
 }
 
 //构造函数
@@ -37,7 +42,3 @@ func (this *IndexController) GetIndex(ctx *gin.Context) interface{}{
 }
 
 
-//构建路由
-func (this *IndexController) Build(goft *ginPlusCore.GinPlusCore){
-	goft.Handle("GET","/",this.GetIndex)
-}

@@ -2,6 +2,6 @@ package ginPlusCore
 
 
 //设计控制机接口
-type IClass interface {
+type IController interface {
 	Build(goft *GinPlusCore)
 }

@@ -2,8 +2,8 @@ package customUtil
 
 import (
 	"context"
-	"ginPlus/src/customConfig"
 	"github.com/go-redis/redis/v8"
+	"github.com/mark-wby/gin-plus/src/custom"
 	"strconv"
 	"time"
 )
@@ -26,10 +26,10 @@ type RedisUtil struct {
 //实力redis
 func NewRedisUtil() *RedisUtil {
 	//将字符串转为数字
-	db,_ := strconv.Atoi(customConfig.CustomConfig["redisServer"]["db"])
+	db,_ := strconv.Atoi(custom.CustomConfig["redisServer"]["db"])
 	rdb := redis.NewClient(&redis.Options{
-		Addr: customConfig.CustomConfig["redisServer"]["host"]+":"+customConfig.CustomConfig["redisServer"]["port"],
-		Password: customConfig.CustomConfig["redisServer"]["password"],
+		Addr: custom.CustomConfig["redisServer"]["host"]+":"+custom.CustomConfig["redisServer"]["port"],
+		Password: custom.CustomConfig["redisServer"]["password"],
 		DB: db,
 	})
 

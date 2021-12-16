@@ -1,7 +1,7 @@
 package plugin
 
 import (
-	"ginPlus/src/custom"
+	"github.com/mark-wby/gin-plus/src/custom"
 	"gorm.io/gorm"
 )
 

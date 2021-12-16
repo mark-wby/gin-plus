@@ -1,9 +1,9 @@
 package main
 
 import (
-	"ginPlus/src/controller"
-	"ginPlus/src/ginPlusCore"
-	"ginPlus/src/middlewares"
+	"github.com/mark-wby/gin-plus/src/controller"
+	"github.com/mark-wby/gin-plus/src/ginPlusCore"
+	"github.com/mark-wby/gin-plus/src/middlewares"
 )
 
 

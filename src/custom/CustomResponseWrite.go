@@ -2,14 +2,13 @@ package custom
 
 import (
 	"bytes"
-	"ginPlus/src/customUtil"
 	"github.com/gin-gonic/gin"
 )
 
 type CustomResponseWrite struct {
 	gin.ResponseWriter
 	Body *bytes.Buffer
-	LogUtil *customUtil.LoggerUtil
+	LogUtil *LoggerUtil
 	RequestParam map[string]interface{}
 }
 

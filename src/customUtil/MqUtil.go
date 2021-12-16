@@ -2,7 +2,7 @@ package customUtil
 
 import (
 	"fmt"
-	"ginPlus/src/customConfig"
+	"github.com/mark-wby/gin-plus/src/custom"
 	"github.com/streadway/amqp"
 	"log"
 	"strconv"
@@ -24,10 +24,10 @@ type MqUtil struct {
 
 func NewMqUtil() *MqUtil {
 
-	port,_ := strconv.Atoi(customConfig.CustomConfig["mqServer"]["port"])
+	port,_ := strconv.Atoi(custom.CustomConfig["mqServer"]["port"])
 
-	dsn := fmt.Sprintf("amqp://%s:%s@%s:%d/",customConfig.CustomConfig["mqServer"]["userName"],customConfig.CustomConfig["mqServer"]["password"],
-		customConfig.CustomConfig["mqServer"]["host"],port)
+	dsn := fmt.Sprintf("amqp://%s:%s@%s:%d/",custom.CustomConfig["mqServer"]["userName"],custom.CustomConfig["mqServer"]["password"],
+		custom.CustomConfig["mqServer"]["host"],port)
 	fmt.Println(dsn)
 	conn,err := amqp.Dial(dsn)
 	if err !=nil{

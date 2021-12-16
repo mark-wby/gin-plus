@@ -4,8 +4,8 @@ import (
 	"crypto/md5"
 	"encoding/json"
 	"fmt"
-	"ginPlus/src/custom"
-	"ginPlus/src/ginPlusCore"
+	"github.com/mark-wby/gin-plus/src/custom"
+	"github.com/mark-wby/gin-plus/src/ginPlusCore"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
@@ -66,7 +66,9 @@ func (this *RequestLogMiddleware) OnRequestAfter(context *gin.Context,write *cus
 	//fmt.Println(msg)
 	res,_ := json.Marshal(msg)
 	fmt.Println(string(res))
-	ginPlusCore.GinPlusCoreInstance.MqUtil.PushMsg(string(res))
-	//fmt.Println(err)
+	//判断是否需要记录日志
+	if custom.CustomConfig["global_setting"]["request_log_flag"]=="true" {
+		ginPlusCore.GinPlusCoreInstance.MqUtil.PushMsg(string(res))
+	}
 	return nil
 }

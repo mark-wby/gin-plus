@@ -4,10 +4,9 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"ginPlus/src/custom"
-	"ginPlus/src/customConfig"
-	"ginPlus/src/customUtil"
 	"github.com/gin-gonic/gin"
+	"github.com/mark-wby/gin-plus/src/custom"
+	"github.com/mark-wby/gin-plus/src/customUtil"
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
 	"net/http"
@@ -27,13 +26,13 @@ type GinPlusCore struct {
 
 //实例构造函数
 func NewGinPlusCore() *GinPlusCore {
+	//设置gin框架运行模式为线上模式
 	//gin.SetMode(gin.ReleaseMode)
 	//初始化配置文件
 	data,_:=ioutil.ReadFile("config/Config.yaml")
 	res := make(map[string]map[string]string,0)
 	yaml.Unmarshal(data,res)
-	customConfig.CustomConfig = res
-
+	custom.CustomConfig = res
 	return &GinPlusCore{Engine: gin.New()}
 }
 
@@ -68,7 +67,7 @@ func (this *GinPlusCore) Handle(httpMethod, relativePath string, handlers interf
 
 //最终gin的启动函数
 func (this *GinPlusCore) Launch(){
-	this.Run(":"+customConfig.CustomConfig["httpServer"]["port"])
+	this.Run(":"+custom.CustomConfig["httpServer"]["port"])
 }
 
 //加载多个中间件
@@ -78,7 +77,7 @@ func (this *GinPlusCore) Attach(milleware ...IMilleware) *GinPlusCore  {
 		blw := &custom.CustomResponseWrite{
 			Body:           bytes.NewBufferString(""),
 			ResponseWriter: context.Writer,
-			LogUtil:        customUtil.NewLoggerUtil(),
+			LogUtil:        custom.NewLoggerUtil(),
 		}
 
 		//解析任何请求方式的请求参数,塞入结构体中
@@ -135,7 +134,7 @@ func (this *GinPlusCore) Attach(milleware ...IMilleware) *GinPlusCore  {
 
 
 //挂在函数,主要是路由和控制器
-func (this *GinPlusCore) Mount(group string,classes ...IClass) *GinPlusCore{
+func (this *GinPlusCore) Mount(group string,classes ...IController) *GinPlusCore{
 	this.Gp = this.Group(group)
 
 	//注入swagger文档地址

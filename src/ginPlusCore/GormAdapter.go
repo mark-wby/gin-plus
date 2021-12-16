@@ -2,8 +2,8 @@ package ginPlusCore
 
 import (
 	"fmt"
-	"ginPlus/src/customConfig"
-	"ginPlus/src/plugin"
+	"github.com/mark-wby/gin-plus/src/custom"
+	"github.com/mark-wby/gin-plus/src/plugin"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"log"
@@ -29,12 +29,12 @@ type GormAdapter struct {
 //创建对象
 func NewGormAdapter() *GormAdapter {
 	dsn := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=%s&parseTime=true&loc=Local",
-		customConfig.CustomConfig["mysqlServer"]["userName"],
-		customConfig.CustomConfig["mysqlServer"]["password"],
-		customConfig.CustomConfig["mysqlServer"]["host"],
-		customConfig.CustomConfig["mysqlServer"]["port"],
-		customConfig.CustomConfig["mysqlServer"]["database"],
-		customConfig.CustomConfig["mysqlServer"]["charset"],
+		custom.CustomConfig["mysqlServer"]["userName"],
+		custom.CustomConfig["mysqlServer"]["password"],
+		custom.CustomConfig["mysqlServer"]["host"],
+		custom.CustomConfig["mysqlServer"]["port"],
+		custom.CustomConfig["mysqlServer"]["database"],
+		custom.CustomConfig["mysqlServer"]["charset"],
 		)
 
 	//dsn :="root:WBY242436biao!@tcp("+dbConfig.Server.Host+":"+dbConfig.Server.Port+")/"+dbConfig.Server.Database+"?charset="+dbConfig.Server.Charset+"&parseTime=true&loc=Local"
