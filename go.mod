@@ -1,4 +1,4 @@
-module ginPlus
+module github.com/mark-wby/gin-plus
 
 go 1.14
 
