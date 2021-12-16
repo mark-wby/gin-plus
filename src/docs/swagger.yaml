@@ -1,0 +1,16 @@
+basePath: /v1
+host: localhost:8080
+info:
+  contact: {}
+  title: gin基础项目
+  version: "1.0"
+paths:
+  /check:
+    get:
+      consumes:
+      - application/json
+      description: 服务初始连接测试
+      produces:
+      - application/json
+      summary: 服务管理
+swagger: "2.0"

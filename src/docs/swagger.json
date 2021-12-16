@@ -1,0 +1,24 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "gin基础项目",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "basePath": "/v1",
+    "paths": {
+        "/check": {
+            "get": {
+                "description": "服务初始连接测试",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "summary": "服务管理"
+            }
+        }
+    }
+}
