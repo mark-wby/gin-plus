@@ -19,7 +19,7 @@ type MqConfig struct {
 }
 
 type MqUtil struct {
-	mqConn *amqp.Connection
+	MqConn *amqp.Connection
 }
 
 func NewMqUtil() *MqUtil {
@@ -34,12 +34,12 @@ func NewMqUtil() *MqUtil {
 		fmt.Println("mq链接失败")
 		log.Fatal(err)
 	}
-	return &MqUtil{mqConn: conn}
+	return &MqUtil{MqConn: conn}
 }
 
 //推送消息到mq
 func (this *MqUtil) PushMsg(body string) error{
-	channel,err := this.mqConn.Channel()
+	channel,err := this.MqConn.Channel()
 	if err!= nil{
 		log.Fatal(err)
 	}
