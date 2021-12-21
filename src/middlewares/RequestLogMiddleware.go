@@ -68,7 +68,7 @@ func (this *RequestLogMiddleware) OnRequestAfter(context *gin.Context,write *cus
 	fmt.Println(string(res))
 	//判断是否需要记录日志
 	if custom.CustomConfig["global_setting"]["request_log_flag"]=="true" {
-		ginPlusCore.GinPlusCoreInstance.MqUtil.PushMsg(string(res))
+		ginPlusCore.GinPlusCoreInstance.MqUtil.PushMsg(string(res),"logExchange","test")
 	}
 	return nil
 }

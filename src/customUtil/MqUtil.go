@@ -38,14 +38,14 @@ func NewMqUtil() *MqUtil {
 }
 
 //推送消息到mq
-func (this *MqUtil) PushMsg(body string) error{
+func (this *MqUtil) PushMsg(body string,exchange string,logKey string) error{
 	channel,err := this.MqConn.Channel()
 	if err!= nil{
 		log.Fatal(err)
 	}
 	defer channel.Close()
 
-	err = channel.Publish("logExchange","test",false,false,
+	err = channel.Publish(exchange,logKey,false,false,
 		amqp.Publishing{
 			ContentType:"text/plain",
 			Body:[]byte(body),
